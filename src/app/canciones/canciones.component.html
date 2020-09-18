@@ -1,0 +1,40 @@
+
+
+
+  <table class="canciones">
+    <caption>Lista de Canciones</caption>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Grupo</th>
+        <th>Canción</th>
+        <th>Album</th>
+        <th>Estilo</th>
+        <th>Duración</th>
+      </tr>
+    </thead>
+    <tr *ngFor="let cancion of canciones" [class.selected]="cancion === selectedCancion" (click)="onSelect(cancion)">
+      <td><span class="badge">{{cancion.id}}</span></td>
+      <td>{{cancion.artista}}</td>
+      <td>{{cancion.nombreCancion}}</td>
+      <td>{{cancion.album}}</td>
+      <td>{{cancion.estilo}}</td>
+      <td>{{cancion.duracion}}</td>
+    </tr>
+  </table>
+
+  <div *ngIf="selectedCancion">
+
+    <h2>{{selectedCancion.nombreCancion | uppercase }} Details</h2>
+    <div><span>id: </span>{{selectedCancion.id}}</div>
+    <div>
+      <label>nombre:
+        <input [(ngModel)]="selectedCancion.nombreCancion" placeholder="nombre"/>
+      </label>
+    </div>
+
+  </div>
+
+
+
+
